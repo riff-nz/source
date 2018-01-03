@@ -89,7 +89,7 @@ func processSongs() {
 		return
 	}
 
-	err = WriteStringToFile(dirJson + "/index.json", string(b))	
+	err = WriteStringToFile(dirJson + "songs/index.json", string(b))	
 }
 
 func processChords() {
