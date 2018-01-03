@@ -21,3 +21,7 @@ deploy:
         basedir: output/html
         branch: master
         repo: riff-nz/html
+    - script:
+        name: "notify website about update"
+        code: |-
+          curl http://www.riff.nz/reload
