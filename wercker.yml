@@ -1,0 +1,23 @@
+box: golang
+build:
+  steps:
+    - script:
+        name: go build
+        code: |
+          go run ./build/song-procesor.go
+deploy:
+  steps:
+    - install-packages:
+        packages: git ssh-client
+    - nztomas/gh-pages@0.2.4:
+        token: $GIT_TOKEN
+        domain: api.riff.nz 
+        basedir: json
+        branch: master
+        repo: riff-nz/api
+    - nztomas/gh-pages@0.2.4:
+        token: $GIT_TOKEN
+        domain: html.riff.nz 
+        basedir: html
+        branch: master
+        repo: riff-nz/html
