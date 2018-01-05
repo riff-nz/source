@@ -63,8 +63,7 @@ func readBody(song *Song, reader *bufio.Reader) {
 			if (e != nil) {
 				// eof
 				// populate all used chords into Song
-				fmt.Println("aaa")
-				fmt.Println(chords)
+				fmt.Println("Processing song chords", chords)
 				for k := range chords { 
     				song.Chords = append(song.Chords, k)	
 				}
@@ -137,8 +136,8 @@ func processChord(chords map[string]bool, textLine string, chord string, output 
 		
 		chords[chord] = true
 
-		chord = ""
 		output = output[:index] + "<div is=\"chord\" name=\"" + chord + "\"></div>" + output[index:]
+		chord = ""
 	}
 	return chords, chord, output
 }
