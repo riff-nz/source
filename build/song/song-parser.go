@@ -1,15 +1,16 @@
 package song
 
 import (
-// 	"fmt"
+ 	"fmt"
     "bufio"
     "strings"
 )
 
 type Song struct {
-    Name string		`json:"name"`
-    Artist string 	`json:"artist"`
-    Html string		`json:"html"`
+    Name string			`json:"name"`
+    Artist string 		`json:"artist"`
+    Chords []string 	`json:"chords"`
+    Html string			`json:"html"`
 }
 
 func ParseSong(data string) *Song {
@@ -51,6 +52,8 @@ func readBody(song *Song, reader *bufio.Reader) {
 	var nextLine = ""
 	var line = ""
 	var e error
+	chords := map[string]bool{}
+
 	for read {
 		if (nextLine != "") {
 			line = nextLine
@@ -58,7 +61,13 @@ func readBody(song *Song, reader *bufio.Reader) {
 		} else {
 			line, e = Readln(reader)
 			if (e != nil) {
-				// error just break
+				// eof
+				// populate all used chords into Song
+				fmt.Println("aaa")
+				fmt.Println(chords)
+				for k := range chords { 
+    				song.Chords = append(song.Chords, k)	
+				}
 				return;
 			}
 		}
@@ -87,7 +96,7 @@ func readBody(song *Song, reader *bufio.Reader) {
 
 			for i, c := range chordsLine {
 				if (c == ' ') {
-					chord, output = processChord(textLine, chord, output)
+					chords, chord, output = processChord(chords, textLine, chord, output)
 				}
 
 				if (c != ' ') {
@@ -101,7 +110,7 @@ func readBody(song *Song, reader *bufio.Reader) {
 				}
 			}
 			// process the last chord on the line (no space after it)
-			chord, output = processChord(textLine, chord, output)
+			chords, chord, output = processChord(chords, textLine, chord, output)
 
 			// when text line is longer than chordsline, just add the remaining texts...
 			if (len(textLine) > len(chordsLine)) {
@@ -119,18 +128,19 @@ func readBody(song *Song, reader *bufio.Reader) {
 	}
 }
 
-func processChord(textLine string, chord string, output string) (string, string) {
+func processChord(chords map[string]bool, textLine string, chord string, output string) (map[string]bool, string, string) {
 	if (chord != "") {
 		index := len(output)
 		if (!strings.HasSuffix(output, "&nbsp;") && len(textLine) > 0 && len(output) >= len(chord)) {
 			index = len(output) - len(chord)
 		}
 		
-		// fmt.Println("count: ", len(output), len(chord), index)
-		return "", output[:index] + "<div is=\"chord\" name=\"" + chord + "\"></div>" + output[index:]
-		// fmt.Println("", output)
+		chords[chord] = true
+
+		chord = ""
+		output = output[:index] + "<div is=\"chord\" name=\"" + chord + "\"></div>" + output[index:]
 	}
-	return chord, output
+	return chords, chord, output
 }
 
 func readLine(line string, prefix string) string {
