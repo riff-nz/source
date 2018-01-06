@@ -52,6 +52,8 @@ func readBody(song *Song, reader *bufio.Reader) {
 	var nextLine = ""
 	var line = ""
 	var e error
+	var firstHashedHeading = true
+
 	chords := map[string]bool{}
 
 	for read {
@@ -72,7 +74,19 @@ func readBody(song *Song, reader *bufio.Reader) {
 		}
 
 		if (strings.HasPrefix(line, "#")) {
-			song.Html += "\n<h3>" + readLine(line, "# ") + "</h3>\n"
+			if (firstHashedHeading) {
+				firstHashedHeading = false
+			} else {
+				song.Html += "</div>\n\n"	
+			}
+			str := readLine(line, "# ")
+			// class name for section
+			section := "section"
+			if (str != "") {
+				section += " " + strings.ToLower(strings.Fields(str)[0])
+			}
+			song.Html += "<div class=\"" + section + "\">"
+			song.Html += "\n  <h3>" + str + "</h3>\n"
 			continue
 		}
 
@@ -118,11 +132,11 @@ func readBody(song *Song, reader *bufio.Reader) {
 			}
 			// fmt.Println(output)
 
-			song.Html += "<div class=\"line"
+			song.Html += "  <div class=\"line"
 			if (len(textLine) > 0) {
 				song.Html += " text"
 			}
-			song.Html += "\">\n  " + output + "\n</div>\n"
+			song.Html += "\">\n    " + output + "\n  </div>\n"
 		}
 	}
 }
