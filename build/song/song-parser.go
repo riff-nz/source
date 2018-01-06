@@ -52,7 +52,7 @@ func readBody(song *Song, reader *bufio.Reader) {
 	var nextLine = ""
 	var line = ""
 	var e error
-	var firstHashedHeading = true
+	var isThisFirstHashedSectionHeading = true
 
 	chords := map[string]bool{}
 
@@ -64,6 +64,8 @@ func readBody(song *Song, reader *bufio.Reader) {
 			line, e = Readln(reader)
 			if (e != nil) {
 				// eof
+				isThisFirstHashedSectionHeading = closeSectionIfNeeded(song, isThisFirstHashedSectionHeading)
+
 				// populate all used chords into Song
 				fmt.Println("Processing song chords", chords)
 				for k := range chords { 
@@ -74,11 +76,8 @@ func readBody(song *Song, reader *bufio.Reader) {
 		}
 
 		if (strings.HasPrefix(line, "#")) {
-			if (firstHashedHeading) {
-				firstHashedHeading = false
-			} else {
-				song.Html += "</div>\n\n"	
-			}
+			isThisFirstHashedSectionHeading = closeSectionIfNeeded(song, isThisFirstHashedSectionHeading)
+
 			str := readLine(line, "# ")
 			// class name for section
 			section := "section"
@@ -174,4 +173,13 @@ func Readln(r *bufio.Reader) (string, error) {
       ln = append(ln, line...)
   }
   return string(ln),err
+}
+
+func closeSectionIfNeeded(song *Song, isThisFirstHashedSectionHeading bool) bool {
+	if (isThisFirstHashedSectionHeading) {
+		isThisFirstHashedSectionHeading = false
+	} else {
+		song.Html += "</div>\n\n"	
+	}
+	return isThisFirstHashedSectionHeading
 }
