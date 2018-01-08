@@ -1,15 +1,20 @@
 package song
 
 import (
- 	"fmt"
+    "fmt"
     "bufio"
     "strings"
+    "github.com/ghodss/yaml"
 )
 
 type Song struct {
     Name string			`json:"name"`
     Artist string 		`json:"artist"`
-    Chords []string 	`json:"chords"`
+    Description string		`json:"description"`
+    Level string 		`json:"level"`
+    Tags []string		`json:"tags"`
+    Links []map[string]string	`json:"links"`
+    Chords []string 		`json:"chords"`
     Html string			`json:"html"`
 }
 
@@ -26,24 +31,24 @@ func ParseSong(data string) *Song {
 }
 
 func readMeta(song *Song, reader *bufio.Reader) {
-	var read bool = true;
+	var content = ""
 
-	for read {
+	for true {
 		line, e := Readln(reader)
 		if (e != nil) {
 			// there were no meta informations
-			return;
+			break
 		}
 		if (strings.HasPrefix(line, "---")) {
-			read = false;
+			break
 		}
 
-		if strings.Contains(line, "song") {
-            song.Name = parseMeta(line)
-        }
-		if strings.Contains(line, "artist") {
-            song.Artist = parseMeta(line)
-        }
+		content += line + "\n"
+	}
+
+	err := yaml.Unmarshal([]byte(content), &song)
+	if (err != nil) {
+		fmt.Println("Problem when unmarshalling YAML", err)
 	}
 }
 
