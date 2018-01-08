@@ -2,7 +2,10 @@ song: Sing Along
 artist: Billy Crudup
 level: easy
 tags: ['soundtrack']
-links: ['youtube://kDQQehzfmDo', 'youtube://xMyrcHdrDeg']
+links: 
+  - media: 'youtube://kDQQehzfmDo'
+    description: 'some text'
+  - media: 'youtube://xMyrcHdrDeg'
 
 ---
 
