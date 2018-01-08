@@ -4,6 +4,7 @@ build:
     - script:
         name: go build
         code: |
+          go get github.com/ghodss/yaml
           go run ./build/song-procesor.go
 deploy:
   steps:
