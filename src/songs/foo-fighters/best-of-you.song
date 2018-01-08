@@ -1,78 +1,84 @@
-song: Best of You
+name: Best of You
 artist: Foo Fighters
 level: easy
-tags: []
-links: []
+tags:
 status: progress
+links:
+  - media: youtube://aR10BA8TLAw
+chords:
+  - name: 'C#m7'
+    strings: 'x 4 2 4 0 0'
+    fingers: '- 4 2 5 - -'
+  - name: 'A5'
+    strings: 'x 0 2 4 0 0'
+    fingers: '- - 2 5 - -'
+  - name: 'B4'
+    strings: 'x 2 4 4 0 0'
+    fingers: '- 1 4 5 - -'
+  - name: 'F#7/C#'
+    strings: 'x 4 4 3 0 0'
+    fingers: '- 4 5 1 - -'
 
 ---
 
 # Verse
-                       C#m7
-I've got another confession to make
-         A5
-I'm your fool
-                        Fm7
-Everyone's got their chains to break
-           C#sus2
-Holdin' you
-                    D#sus4              C#sus2
-Were you born to resist or be abused?
+%                     C#m7
+> I've got another confession to make
+%          A5
+> I'm your fool
+%                        C#m7
+> Everyone's got their chains to break
+%         A5
+> Holdin' you
+%                   B4          A5
+> Were you born to resist or be abused?
 
+# Pre-Chorus
+%                        C#m7                B4                A5
+> Is someone getting the best, the best, the best, the best of you?
+%                        C#m7                B4                A5
+> Is someone getting the best, the best, the best, the best of you?
 
-[Pre-Chorus]
+# Verse 2
+% C#m7             B4           A5
+> Are you gone and onto someone new?
+%                       C#m7
+> I needed somewhere to hang my head
+%              A5
+> Without your noose
+%                              C#m7
+> You gave me something that I didn't have
+%            A5
+> But had no use
+%                        B4
+> I was too weak to give in
+%               A5
+> Too strong to lose
+%                      C#m7
+> My heart is under arrest again
+%             A5
+> But I break loose
+%                      C#m7
+> My head is giving me life or death
+%             A5
+> But I can't choose
+%                         B4
+> I swear I'll never give in
+%     A5
+> I refuse
 
-                       Fm7             D#sus4              C#sus2
-Is someone getting the best, the best, the best, the best of you?
-                       Fm7                D#sus4            C#sus2
-Is someone getting the best, the best, the best, the best of you?
+# Pre-Chorus
+%                        C#m7                B4                A5
+> Is someone getting the best, the best, the best, the best of you?
+%                        C#m7                B4                A5
+> Is someone getting the best, the best, the best, the best of you?
 
-
-[Verse 2]
-
-Fm7             D#sus4        C#sus2 (hit and then let ring)
-Are you gone and onto someone new?
-                        Fm7
-I needed somewhere to hang my head
-                C#sus2
-Without your noose
-                               Fm7
-You gave me something that I didn't have
-             C#sus2
-But had no use
-                       D#sus4
-I was too weak to give in
-                 C#sus2
-Too strong to lose
-                     Fm7
-My heart is under arrest again
-                C#sus2
-But I break loose
-                     Fm7
-My head is giving me life or death
-               C#sus2
-But I can't choose
-                    D#sus4
-I swear I'll never give in
-       C#sus2
-I refuse
-
-
-[Pre-Chorus]
-
-                      F5           D#5                    C#5
-Is someone getting the best, the best, the best, the best of you?
-                       F5                D#5                  C#5
-Is someone getting the best, the best, the best, the best of you?
-
-
-[Chorus]
-
-                         F5
-Has someone taken your faith?
-               D#sus4
+# Chorus
+%                        C#m7
+> Has someone taken your faith?
+%             B4
 Its real, the pain you feel
-      C#5
+%       C#5
 You trust, you must
       A#5
 Confess
@@ -95,7 +101,7 @@ Oh...Oh...Oh...Oh...
 Has someone taken your faith?
               D#sus4
 Its real, the pain you feel
-       C#sus2
+       A5
 The life, the love
      A#m
 You die to heal
@@ -103,7 +109,7 @@ You die to heal
 The hope that starts
       D#sus4
 The broken hearts
-     C#sus2
+     A5
 You trust, you must
      A#m
 Confess
@@ -127,7 +133,7 @@ I'm no fool
 I'm getting tired of starting again
           C#5
 Somewhere new
-                  D#sus4         C#sus2
+                  D#sus4         A5
 Were you born to resist or be abused?
                         D#sus4
 I swear I'll never give in
