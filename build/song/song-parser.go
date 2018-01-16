@@ -5,25 +5,26 @@ import (
     "bufio"
     "strings"
     "github.com/ghodss/yaml"
+	chordParser "../chord"
 )
 
 type Song struct {
-    Name string			`json:"name"`
-    Artist string 		`json:"artist"`
-    Description string		`json:"description"`
-    Level string 		`json:"level"`
-    Tags []string		`json:"tags"`
+    Name string					`json:"name"`
+    Artist string 				`json:"artist"`
+    Description string			`json:"description"`
+    Level string 				`json:"level"`
+    Tags []string				`json:"tags"`
     Links []map[string]string	`json:"links"`
-    Chords []string 		`json:"chords"`
-    Html string			`json:"html"`
+    Chords []*chordParser.Chord `json:"chords"`
+    Html string					`json:"html"`
 }
 
-func ParseSong(data string) *Song {
+func ParseSong(data string, chords* []chordParser.Chord) *Song {
 	song := new(Song);
 	reader := bufio.NewReader(strings.NewReader(data))
 	
 	readMeta(song, reader)
-	readBody(song, reader)
+	readBody(song, reader, *chords)
 
 	return song
 	// error := WriteStringToFile("./output/the-cranberries/zombie.html", song.Html)
@@ -46,13 +47,14 @@ func readMeta(song *Song, reader *bufio.Reader) {
 		content += line + "\n"
 	}
 
+	// fmt.Println(content)
 	err := yaml.Unmarshal([]byte(content), &song)
 	if (err != nil) {
 		fmt.Println("Problem when unmarshalling YAML", err)
 	}
 }
 
-func readBody(song *Song, reader *bufio.Reader) {
+func readBody(song *Song, reader *bufio.Reader, allChords []chordParser.Chord) {
 	var read bool = true
 	var nextLine = ""
 	var line = ""
@@ -73,8 +75,23 @@ func readBody(song *Song, reader *bufio.Reader) {
 
 				// populate all used chords into Song
 				fmt.Println("Processing song chords", chords)
-				for k := range chords { 
-    				song.Chords = append(song.Chords, k)	
+				for chord := range chords { 
+    				for _, alreadyAddedChord := range song.Chords {
+    					if (chord == alreadyAddedChord.Name) {
+    						chord = ""
+    						break
+    					}
+    				}
+
+					if (chord != "") {
+						// find full chord
+	    				for _, fullChord := range allChords {
+							if (chord == fullChord.Name) {
+								song.Chords = append(song.Chords, &fullChord)
+								break				
+							}
+						}						
+					}
 				}
 				return;
 			}

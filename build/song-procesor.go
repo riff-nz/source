@@ -18,22 +18,20 @@ type SongIndex struct {
     Path string		`json:"path"`
 }
 
-type ChordIndex struct {
-    Name string			`json:"name"`
-    Key string			`json:"key"`
-    String []string		`json:"strings"`
-    Fingers []string	`json:"fingers"`
-}
-
-func processSongs() {
-	var index []SongIndex
-	dir := "src/songs/"
+func cleanup() (string, string) {
 	dirJson := "output/json/"
 	dirHtml := "output/html/"
 
 	// first cleanup
 	os.RemoveAll(dirJson)
 	os.RemoveAll(dirHtml)
+
+	return dirJson, dirHtml
+}
+
+func processSongs(chords* []chordParser.Chord, dirJson string, dirHtml string) {
+	var index []SongIndex
+	dir := "src/songs/"
 
 	fileList := make([]string, 0)
 	e := filepath.Walk(dir, func(path string, f os.FileInfo, err error) error {
@@ -52,7 +50,7 @@ func processSongs() {
 			if (err != nil) {
 				fmt.Println("problem when reading " + file)
 			}
-			song := songParser.ParseSong(string(b))
+			song := songParser.ParseSong(string(b), chords)
 
 			outputPath := string(file)
 			outputPath = outputPath[(len(dir)):]
@@ -67,7 +65,7 @@ func processSongs() {
 				continue
 			}
 			
-			b, err = json.Marshal(song)
+			b, err = toJson(song)
 			if (err != nil) {
 				fmt.Println("problem when writing html file", file, err)
 				continue
@@ -83,7 +81,7 @@ func processSongs() {
 		}
 	}
 
-	b, err := json.Marshal(index)
+	b, err := toJson(index)
 	if (err != nil) {
 		fmt.Println("problem when writing index json file", err)
 		return
@@ -92,8 +90,8 @@ func processSongs() {
 	err = WriteStringToFile(dirJson + "songs/index.json", string(b))	
 }
 
-func processChords() {
-	var index []ChordIndex
+func processChords() []chordParser.Chord {
+	var chords []chordParser.Chord
 	dir := "src/chords"
 	dirJson := "output/json/chords"
 
@@ -122,11 +120,13 @@ func processChords() {
 			
 			jsonOutputPath := dirJson + outputPath + ".json"
 
-			b, err = json.Marshal(chord)
+			b, err = toJson(chord)
 			if (err != nil) {
 				fmt.Println("problem when writing html file", file, err)
 				continue
 			}
+
+			fmt.Println("output", jsonOutputPath)
 			
 			err = WriteStringToFile(jsonOutputPath, string(b))	
 			if (err != nil) {
@@ -134,17 +134,18 @@ func processChords() {
 				continue
 			}
 
-			index = append(index, ChordIndex{chord.Name, chord.Key, chord.Strings, chord.Fingers})
+			chords = append(chords, *chord)
 		}
 	}
 
-	b, err := json.Marshal(index)
+	b, err := toJson(chords)
 	if (err != nil) {
 		fmt.Println("problem when writing index json file", err)
-		return
+		return chords
 	}
 
 	err = WriteStringToFile(dirJson + "/index.json", string(b))	
+	return chords
 }
 
 func WriteStringToFile(file string, s string) error {
@@ -162,7 +163,12 @@ func WriteStringToFile(file string, s string) error {
     return nil
 }
 
+func toJson(data interface{}) ([]byte, error) {
+	return json.MarshalIndent(data, "", "  ");
+}
+
 func main() {
-	processSongs()
-	processChords()
+	dirJson, dirHtml := cleanup()
+	chords:= processChords()
+	processSongs(&chords, dirJson, dirHtml)
 }

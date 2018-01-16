@@ -9,8 +9,8 @@ import (
 type Chord struct {
     Name string	  		`json:"name"`
     Key string        `json:"key"`
-    Strings []string 	`json:"strings"`
-    Fingers []string	`json:"fingers"`
+    Strings string 	  `json:"strings"`
+    Fingers string	  `json:"fingers"`
 }
 
 func ParseChord(data string) *Chord {
@@ -46,14 +46,14 @@ func readMeta(chord *Chord, reader *bufio.Reader) {
 		if strings.Contains(line, "strings") {
       guitarStrings := parseMeta(line)
       if (guitarStrings != "") {
-				chord.Strings = strings.Fields(guitarStrings)
+				chord.Strings = guitarStrings
       }
     }
 
 		if strings.Contains(line, "fingers") {
       guitarFingers := parseMeta(line)
       if (guitarFingers != "") {
-		    chord.Fingers = strings.Fields(guitarFingers)
+		    chord.Fingers = guitarFingers
       }
     }
 	}
