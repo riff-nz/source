@@ -1,7 +1,14 @@
 name: Sweet Child O Mine
 artist: Guns N' Roses
 level: easy
-tags: []
+tags:
+links:
+  - media: 'youtube://4JgSp_pS3ZE'
+    description: 'Acoustic version by Slash & Myles Kennedy'
+  - media: 'youtube://gUqF3rmfoHA'
+    description: 'Acoustic version by Ben Owen'
+  - media: 'youtube://rki0MI4ZXD4'
+    description: 'From a movie Captain Fantastic'
 
 ---
 
