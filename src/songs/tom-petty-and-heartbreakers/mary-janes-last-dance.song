@@ -1,8 +1,11 @@
 name: Mary Jane's Last Dance
 artist: Tom Petty and Heartbreakers
 level: easy
-tags: []
-
+tags:
+links:
+  - media: youtube://aowSGxim_O8
+    description: 'Original music video'
+    
 ---
 
 # Verse
