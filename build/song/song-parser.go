@@ -180,7 +180,7 @@ func processChord(chords map[string]bool, textLine string, chord string, output 
 
 func readLine(line string, prefix string) string {
 	tokens := strings.Split(line, prefix)
-	if (tokens.len != 2) {
+	if (len(tokens) != 2) {
 		fmt.Println("Problem when spliting line %s with prefix %s", line, prefix)
 		os.Exit(1)
 	}
