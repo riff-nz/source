@@ -178,7 +178,16 @@ func processChord(chords map[string]bool, textLine string, chord string, output 
 }
 
 func readLine(line string, prefix string) string {
-    return strings.Split(line, prefix)[1]
+	tokens, err := strings.Split(line, prefix)[1]
+	if (err != nil) {
+		fmt.Println("Problem when spliting line %s with prefix %s", line, prefix, err)
+	}
+	if (tokens.len > 1) {
+		return tokens[1]
+	}
+	
+	fmt.Println("Problem when spliting line %s with prefix %s", line, prefix)
+	os.Exit("Breaking the build")
 }
 
 func parseMeta(line string) string {
