@@ -181,7 +181,7 @@ func processChord(chords map[string]bool, textLine string, chord string, output 
 func readLine(line string, prefix string) string {
 	tokens := strings.Split(line, prefix)
 	if (len(tokens) != 2) {
-		fmt.Sprintln("Problem when spliting line %s with prefix %s", line, prefix)
+		fmt.Printf("Problem when spliting line %s with prefix %s\n", line, prefix)
 		os.Exit(1)
 	}
 	return tokens[1]
