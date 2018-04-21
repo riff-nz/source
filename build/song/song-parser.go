@@ -139,7 +139,7 @@ func readBody(song *Song, reader *bufio.Reader, allChords []chordParser.Chord) {
 				}
 
 				if (len(textLine) > i) {
-					output += string(textLine[i])
+					output += string([]rune(textLine)[i])
 				} else {
 					output += "&nbsp;"
 				}
