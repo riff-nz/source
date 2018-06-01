@@ -1,56 +1,90 @@
-name: Uz to nenapravim
-artist: Jaroslav Samson Lenk
+name: Space Oddity
+artist: David Bowie
 level: easy
-tags: ['']
-links: [''] 
-  ---
-% Ami D F E Ami E Ami D F E Ami E 
-# Verse
-%   Ami                    D         
-> V devět hodin dvacet pět mě opustilo štěstí, 
-%   F                                      E     E7
-> ten vlak, co jsem jím měl jet, na koleji dávno nestál, 
-%   Ami                    D         
-> v devět hodin dvacet pět jako bych dostal pěstí,
-%   F                                  E     E7
-> já za hodinu na náměstí měl jsem stát, ale v jiným městě.
-%   A7
-> Tvá zpráva zněla prostě a byla tak krátká, 
-%   Dmi
-> že stavíš se jen na skok, že nechalas' mi vrátka 
-% G               E
-> zadní otevřená, zadní otevřená, 
-%   A7
-> já naposled tě viděl, když ti bylo dvacet, 
-%   Dmi
-> to jsi tenkrát řekla, že se nechceš vracet,
-% G               E
-> že jsi unavená, ze mě unavená. 
-#Chorus:
-% Ami D F E Ami E Ami D F E Ami E 
-> Vap ta da...
+tags:
+links:
+  - media: 'youtube://5yBl5oZ_iqQ'
+    description: 'Acoustic version by Marty Music'
 
-# Verse
-%   Ami                    D         
-> Já čekala jsem, hlavu jako střep, a zdálo se, že dlouho, 
-%   F                                      E     E7
-> může za to vinný sklep, že člověk často sleví, 
-%   Ami                    D         
-> já čekala jsem, hlavu jako střep, s podvědomou touhou, 
-%   F                                      E     E7
-> já čekala jsem dobu dlouhou, víc než dost, kolik přesně nevím. 
-%   A7
-> Pak jedenáctá byla a už to bylo passé,
-%   Dmi
-> já měla vědět dřív, že vidět chci tě zase, 
-% G               E
-> láska nerezaví, láska nerezaví, 
-%   A7
-> ten list, co jsem ti psala, byl dozajista hloupý, 
-%  Dmi
-> byl odměřený moc, na vlídný slovo skoupý,
-% G               E
-> už to nenapravím, už to nenapravím. 
-# Chorus:
-% Ami D F E Ami E Ami D F E Ami E 
-> Vap ta da...
+---
+# Intro
+% Fmaj7  Em  Fmaj7  Em
+% Fmaj7  Em  Fmaj7  Em
+
+# Pre-Verse
+% C                       Em
+> Ground control to Major Tom
+% C                       Em
+> Ground control to Major Tom
+% Am        Am7               D7
+> Take your protein pills and put your helmet on
+% C                       Em
+> Ground control to Major Tom
+% C                            Em
+> Commencing countdown engines on
+% Am    Am7              D7
+> Check ignition and may God's love be with you
+
+# Verse 1
+% C                               E
+> This is ground control to Major Tom
+%                        F
+> You've really made the grade
+%         Fm             C                    F
+> And the papers want to know whose shirt you wear
+%          Fm                C              F
+> Now it's time to leave the capsule if you dare
+% C                             E7
+> This is Major Tom to ground control
+%                          F
+> I'm stepping through the door
+%         Fm            C             F
+> And I'm floating in a most peculiar way
+%         Fm              C           F
+> And the stars look very different today
+
+# Chorus
+%     Fmaj7     Em
+> For here am I sitting in a tin can
+% Fmaj7         Em
+> Far above the world
+% Bb              Am               G             F
+> Planet Earth is blue and there's nothing I can do
+
+# Instrumental
+% C F G A A
+% C F G A A
+% Fmaj7 Em  A  C  D  E
+
+# Verse 2
+% C                                    E7
+> Though I'm past one hundred thousand miles
+%                  F
+> I'm feeling very still
+%       Fm                 C                  F
+> And I think my spaceship knows which way to go
+%         Fm              C             F
+> Tell my wife I love her very much she knows
+
+# Bridge
+% G                 E7              Am                      Am7
+> Ground control to Major Tom, your circuit's dead, there's something wrong
+%         D7
+> Can you hear me Major Tom?
+%         C
+> Can you hear me Major Tom?
+%         D7
+> Can you hear me Major Tom? Can you...
+
+# Chorus
+% Fmaj7     Em
+> Here am I floating 'round my tin can
+% Fmaj7         Em
+> Far above the Moon
+% Bb              Am               G             F
+> Planet Earth is blue and there's nothing I can do
+
+# Outro
+% C F G A A
+% C F G A A
+% Fmaj7 Em  A  C  D  E
