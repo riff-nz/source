@@ -13,12 +13,6 @@ deploy:
         basedir: output/json
         branch: master
         repo: riff-nz/api
-    - nztomas/gh-pages@0.2.4:
-        token: $GIT_TOKEN
-        domain: html.riff.nz 
-        basedir: output/html
-        branch: master
-        repo: riff-nz/html
     - script:
         name: "notify website about update"
         code: |-
