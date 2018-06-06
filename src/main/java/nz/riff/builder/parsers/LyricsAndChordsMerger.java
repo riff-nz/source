@@ -35,9 +35,9 @@ public class LyricsAndChordsMerger {
 
 	String wrapChords(List<String> chords) {
 		StringBuilder sb = new StringBuilder();
-		sb.append("<div id=\"chords\">");
+		sb.append("<div class=\"chords\">");
 		for (String chord : chords) {
-			sb.append("<div class=\"chord\">" + chord + "</div>");
+			sb.append("<div is=\"chord\" name=\"" + chord + "\"></div>");
 		}
 		sb.append("</div>");
 		return sb.toString();

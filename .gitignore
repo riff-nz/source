@@ -1,5 +1,5 @@
 output/*/*
-java/.settings
-java/target
-java/.project
-java/.classpath
+.settings
+target
+.project
+.classpath

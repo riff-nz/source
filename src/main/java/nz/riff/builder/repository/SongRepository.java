@@ -32,7 +32,7 @@ public class SongRepository {
 	public Map<String, Song> get() {
 		Map<String, Song> songs = new LinkedHashMap<>();
 
-		Collection<File> files = FileUtils.listFiles(new File("../src/songs/"), new SuffixFileFilter(".song"), TrueFileFilter.INSTANCE);
+		Collection<File> files = FileUtils.listFiles(new File("./data/songs/"), new SuffixFileFilter(".song"), TrueFileFilter.INSTANCE);
 		for (File file : files) {
 			try {
 				Song song = this.songParser.parse(FileUtils.readFileToString(file, "UTF-8"));

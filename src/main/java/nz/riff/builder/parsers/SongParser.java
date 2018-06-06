@@ -104,6 +104,11 @@ public class SongParser {
 
 			lineNumber++;
 		}
+		
+		if (data.length() > 0) {
+			data.append("</div>");
+		}
+
 		return data.toString();
 	}
 

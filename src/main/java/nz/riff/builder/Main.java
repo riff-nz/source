@@ -18,7 +18,7 @@ public class Main {
 				super.configure();
 
 				ObjectMapper json = new ObjectMapper();
-				json.enable(SerializationFeature.INDENT_OUTPUT);
+				//json.enable(SerializationFeature.INDENT_OUTPUT);
 				json.setSerializationInclusion(Include.NON_EMPTY);
 
 				bind(json).named("json");

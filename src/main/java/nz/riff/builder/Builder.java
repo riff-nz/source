@@ -18,7 +18,7 @@ public class Builder {
 
 	private static final Logger log = LoggerFactory.getLogger(Builder.class);
 
-	static final String OUTPUT_JSON_DIR = "../output/json/";
+	static final String OUTPUT_JSON_DIR = "./output/json/";
 
 	private ChordRepository chordRepository;
 

@@ -33,7 +33,7 @@ public class ChordRepository {
 		log.debug("Loading chords...");
 		chords = new LinkedHashMap<>();
 
-		File folder = new File("../src/chords/");
+		File folder = new File("./data/chords/");
 		for (File file : folder.listFiles()) {
 			if (file.isFile()) {
 				try {
