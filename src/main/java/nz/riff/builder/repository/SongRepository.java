@@ -1,14 +1,17 @@
 package nz.riff.builder.repository;
 
 import java.io.File;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.comparator.PathFileComparator;
 import org.apache.commons.io.filefilter.SuffixFileFilter;
 import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.slf4j.Logger;
@@ -32,7 +35,9 @@ public class SongRepository {
 	public Map<String, Song> get() {
 		Map<String, Song> songs = new LinkedHashMap<>();
 
-		Collection<File> files = FileUtils.listFiles(new File("./data/songs/"), new SuffixFileFilter(".song"), TrueFileFilter.INSTANCE);
+		List<File> files = new ArrayList<File>(FileUtils.listFiles(new File("./data/songs/"), new SuffixFileFilter(".song"), TrueFileFilter.INSTANCE));
+		Collections.sort(files, new PathFileComparator());
+		
 		for (File file : files) {
 			try {
 				log.debug("Parsing song \"{}\"", file.getParentFile().getName() + "/" + file.getName());
