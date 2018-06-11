@@ -35,8 +35,10 @@ public class SongRepository {
 		Collection<File> files = FileUtils.listFiles(new File("./data/songs/"), new SuffixFileFilter(".song"), TrueFileFilter.INSTANCE);
 		for (File file : files) {
 			try {
+				log.debug("Parsing song \"{}\"", file.getParentFile().getName() + "/" + file.getName());
 				Song song = this.songParser.parse(FileUtils.readFileToString(file, "UTF-8"));
 				songs.put(this.getPath(file), song);
+				log.debug("Parsed song \"{}\" ({} chords)", file.getParentFile().getName() + "/" + file.getName(), song.chords.size());
 			} catch (Exception e) {
 				log.error("Problem when parsing song {}", file, e);
 			}
