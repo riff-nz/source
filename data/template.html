@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"></meta>
+    <!--<title>${title}</title>-->
+    <style>
+      html {
+        font-size: 12px;
+      }
+      h1, h2 {
+        text-align: center;
+        padding: 0;
+        margin: 0;
+      }
+
+      .line .chords .chord {
+        color: grey;
+      }
+      .line.chords-only .chords {
+        clear: both;
+      }
+      .line.chords-only .chords .chord {
+        float: left;
+        margin-right: 0.5em;
+      }
+
+      .line.with-lyrics {
+        padding-top: 1.2em;
+        position: relative;
+      }
+      .line.with-lyrics .chords {
+        width: 0px;
+        overflow: visible;
+        display: inline-block;
+        top: -1em;
+        position: relative;
+      }
+      .line.with-lyrics .chords .chord {
+        padding-right: .5em;
+      }
+
+      .tabs {
+        columns: 2;
+        column-gap: 1em;
+        column-rule: 1px dotted silver;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+    <h1>${name}</h1>
+    <h2>${artist}</h2>
+  -->
+    <div class="tabs">${content}</div>
+  </body>
+</html>

@@ -13,14 +13,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import nz.riff.builder.bean.Chord;
 
-public class ChordWriter {
+public class ChordJSonWriter {
 
-	private static final Logger log = LoggerFactory.getLogger(ChordWriter.class);
+	private static final Logger log = LoggerFactory.getLogger(ChordJSonWriter.class);
 
 	private ObjectMapper mapper;
 
 	@Inject
-	public ChordWriter(@Named("json") ObjectMapper mapper) {
+	public ChordJSonWriter(@Named("json") ObjectMapper mapper) {
 		super();
 		this.mapper = mapper;
 	}

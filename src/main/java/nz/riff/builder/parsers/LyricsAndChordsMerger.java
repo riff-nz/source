@@ -37,7 +37,7 @@ public class LyricsAndChordsMerger {
 		StringBuilder sb = new StringBuilder();
 		sb.append("<div class=\"chords\">");
 		for (String chord : chords) {
-			sb.append("<div is=\"chord\" name=\"" + chord + "\"></div>");
+			sb.append("<div class=\"chord\" is=\"chord\" name=\"" + chord + "\">" + chord + "</div>");
 		}
 		sb.append("</div>");
 		return sb.toString();

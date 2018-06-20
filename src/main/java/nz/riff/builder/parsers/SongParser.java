@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.itextpdf.text.pdf.StringUtils;
 
 import nz.riff.builder.bean.Chord;
 import nz.riff.builder.bean.Song;
@@ -96,7 +97,7 @@ public class SongParser {
 			if (lyrics != null || chords != null) {
 				Map<Integer, List<String>> parsedChords = this.chordLineParser.parse(chords);
 				this.addChords(allSongChords, parsedChords);
-				this.addLine(data, this.lyricsAndChordsMerger.merge(lyrics, parsedChords));
+				this.addLine(data, this.lyricsAndChordsMerger.merge(lyrics, parsedChords), lyrics != null ? "with-lyrics" : "chords-only");
 				continue;
 			}
 
@@ -129,8 +130,14 @@ public class SongParser {
 		data.append("</h3>");
 	}
 
-	void addLine(StringBuilder data, String line) {
-		data.append("<div class=\"line\">");
+	void addLine(StringBuilder data, String line, String ... classNAmes) {
+		String cssClasses = "line";
+		if (classNAmes != null && classNAmes.length > 0) {
+			for (String cl : classNAmes) {
+				cssClasses += (cl == null || "".equals(cl) ? "" : " " + cl);
+			}
+		}
+		data.append("<div class=\"" + cssClasses + "\">");
 		data.append(line);
 		data.append("</div>");
 	}

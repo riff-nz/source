@@ -17,14 +17,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import nz.riff.builder.bean.Song;
 import nz.riff.builder.bean.SongIndex;
 
-public class SongWriter {
+public class SongJsonWriter {
 
-	private static final Logger log = LoggerFactory.getLogger(SongWriter.class);
+	private static final Logger log = LoggerFactory.getLogger(SongJsonWriter.class);
 
 	private ObjectMapper mapper;
 
 	@Inject
-	public SongWriter(@Named("json") ObjectMapper mapper) {
+	public SongJsonWriter(@Named("json") ObjectMapper mapper) {
 		super();
 		this.mapper = mapper;
 	}
