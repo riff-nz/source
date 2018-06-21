@@ -1,7 +1,17 @@
 box: maven:3.5.2-jdk-8
 build:
   steps:
-    - install-packages:
+    - script:
+        name: install phantomjs 1.9.8
+        code: |
+          cd /tmp
+          export PHANTOM_JS="phantomjs-1.9.8-linux-x86_64"
+          wget https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM_JS.tar.bz2
+          tar xvjf $PHANTOM_JS.tar.bz2
+          mv $PHANTOM_JS /usr/local/share
+          ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/local/bin
+          # checking if phantomjs works:
+          phantomjs --version
         packages: wkhtmltopdf
     - wercker/maven:
         goals: clean compile exec:java
