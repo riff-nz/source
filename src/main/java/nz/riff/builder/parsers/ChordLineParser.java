@@ -8,6 +8,11 @@ import java.util.Map;
 public class ChordLineParser {
 	public Map<Integer, List<String>> parse(String line) {
 		Map<Integer, List<String>> chords = new LinkedHashMap<>();
+
+		if (line == null || line.trim().equals("")) {
+			return chords;
+		}
+
 		line = line + " ";
 
 		int numberOfSpaces = 0;
@@ -20,10 +25,11 @@ public class ChordLineParser {
 			}
 
 			String chord = line.substring(i, i + line.substring(i).indexOf(" "));
-			int position = (chords.size() > 0 && numberOfSpaces == 1) ? (int) chords.keySet().toArray()[chords.size() - 1] : i;
+			int position = (chords.size() > 0 && numberOfSpaces == 1)
+					? (int) chords.keySet().toArray()[chords.size() - 1] : i;
 			i = i + chord.length() - 1;
 			numberOfSpaces = 0;
-			
+
 			if (chord.startsWith("(")) {
 				continue;
 			}
