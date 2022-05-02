@@ -19,7 +19,7 @@ deploy:
   steps:
     - install-packages:
         packages: git ssh-client
-    - nztomas/gh-pages@0.2.4:
+    - nztomas/gh-pages:
         token: $GIT_TOKEN
         domain: api.riff.nz 
         basedir: output/json
