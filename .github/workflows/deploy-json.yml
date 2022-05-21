@@ -13,3 +13,12 @@ jobs:
     - name: Build with Maven
       run:
         mvn clean compile exec:java
+        
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@v4.3.3
+      with:
+        branch: master # The branch the action should deploy to.
+        folder: ./output/json/ # The folder the action should deploy.
+        
+    - name: Reload
+      run: curl http://www.riff.nz/reload
