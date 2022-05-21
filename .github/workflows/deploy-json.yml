@@ -17,6 +17,7 @@ jobs:
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4.3.3
       with:
+        token: ${{ secrets.JSON_API_TOKEN }}
         branch: master # The branch the action should deploy to.
         folder: ./output/json/ # The folder the action should deploy.
         repository-name: riff-nz/api
