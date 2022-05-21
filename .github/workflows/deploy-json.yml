@@ -1,0 +1,7 @@
+name: Deploy json api
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: maven
+    steps:
+      - run: clean compile exec:java
